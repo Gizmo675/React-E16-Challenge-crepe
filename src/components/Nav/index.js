@@ -42,7 +42,7 @@ const Nav = () => (
       <li>
         <NavLink
         exact
-        // key={recipe.name}
+        key={recipe.name}
         to={`/recipe/${slugify(recipe.name)}`}
         >
         {recipe.name}

@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 /**
  * Local import
@@ -19,23 +20,40 @@ import './app.scss';
 /**
  * Code
  */
-// console.log(recipes[0].steps);
-const App = ({
-  
-}) => (
-  <div id="app">
-    <Nav />
-    {recipes.map(recipe => (
-      <Route
-        exact
-        key={recipe.name}
-        path={`/recipe/${slugify(recipe.name)}`}
-        render={() => <Recipe {...recipe} />}
-      />
-    ))}
-    <Route path="/home" component={Home} />
-  </div>
-);
+
+class App extends React.Component {
+  state = {};
+
+  componentDidMount() {
+    const url = 'https://raw.githubusercontent.com/raywenderlich/recipes/master/Recipes.json';
+    // Appel avec axios en GET
+    axios.get(url)
+      // Succès
+      .then()
+      // Échec
+      .catch()
+      // Dans tous le
+      .then(() => {});
+  }
+
+  render() {
+    return (
+      <div id="app">
+      <Nav />
+      {recipes.map(recipe => (
+        <Route
+          exact
+          key={recipe.name}
+          path={`/recipe/${slugify(recipe.name)}`}
+          render={() => <Recipe {...recipe} />}
+        />
+      ))}
+      <Route path="/home" component={Home} />
+    </div>
+    );  
+
+  }
+}
 
 /**
  * Export
