@@ -7,7 +7,6 @@ import { NavLink, Route } from 'react-router-dom';
 /**
  * Local import
  */
-import Recipe from 'src/components/Recipe';
 import Home from 'src/components/Home';
 import './nav.scss';
 import recipes from 'src/data/recipe';

@@ -9,25 +9,34 @@ import { Route } from 'react-router-dom';
  */
 import Nav from 'src/components/Nav';
 import Recipe from 'src/components/Recipe';
+import Home from 'src/components/Home';
 import recipes from 'src/data/recipe';
 import { slugify } from 'src/components/Nav';
+
 // Styles
 import './app.scss';
 
 /**
  * Code
  */
-const App = () => (
+console.log(recipes);
+const App = ({
+  
+}) => (
   <div id="app">
     <Nav />
     {recipes.map(recipe => (
       <Route
-      exact
-      key={recipe.name}
-      path={`/recipe/${slugify(recipe.name)}`}
-      render={() => <Recipe />}
+        exact
+        key={recipe.name}
+        path={`/recipe/${slugify(recipe.name)}`}
+        render={() => <Recipe 
+        name={recipe.name}
+        img={recipe.imageURL}
+        />}
       />
     ))}
+    <Route path="/home" component={Home} />
   </div>
 );
 
