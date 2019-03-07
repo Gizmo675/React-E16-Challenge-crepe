@@ -13,19 +13,37 @@ import recipes from 'src/data/recipe';
 /**
  * Code
  */
+export const slugify = (string) => {
+  const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœṕŕßśșțùúüûǘẃẍÿź·/_,:;'
+  const b = 'aaaaaaaaceeeeghiiiimnnnoooooprssstuuuuuwxyz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
+  return string.toString().toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, '-and-') // Replace & with ‘and’
+    .replace(/[^\w-]+/g, '') // Remove all non-word characters
+    .replace(/--+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
+}
+
+// console.log(slugify(recipes[0].name));
+
 const Nav = () => (
   <div id="nav">
     <nav>
       <li>Home</li>
       {recipes.map(recipe => (
-      <NavLink
-      exact
-      key={recipe.name}
-      to={recipe.name}
-      >
-      {recipe.name}
-      </NavLink>
-      ))}   
+      <li>
+        <NavLink
+        exact
+        key={recipe.name}
+        to={slugify(recipe.name)}
+        >
+        {recipe.name}
+        </NavLink>
+      </li>
+      ))}
     </nav>
   </div>
 );
