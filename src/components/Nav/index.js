@@ -2,11 +2,13 @@
  * NPM import
  */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 
 /**
  * Local import
  */
+import Recipe from 'src/components/Recipe';
+import Home from 'src/components/Home';
 import './nav.scss';
 import recipes from 'src/data/recipe';
 
@@ -32,13 +34,18 @@ export const slugify = (string) => {
 const Nav = () => (
   <div id="nav">
     <nav>
-      <li>Home</li>
+    <li>
+      <NavLink to="/home">
+        Home
+      </NavLink>
+    </li>
+    <Route path="/home" component={Home} />
       {recipes.map(recipe => (
       <li>
         <NavLink
         exact
         key={recipe.name}
-        to={slugify(recipe.name)}
+        to={`/recipe/${slugify(recipe.name)}`}
         >
         {recipe.name}
         </NavLink>
