@@ -20,7 +20,7 @@ const Ingredient = ({ name, quantity }) => (
 
 Ingredient.propTypes = {
   name: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
+  quantity: PropTypes.string.isRequired,
 };
 
 /**

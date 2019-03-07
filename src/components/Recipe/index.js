@@ -20,14 +20,14 @@ import recipeData from 'src/data/oldRecipe';
 /**
  * Code
  */
-const Recipe = ({ name, img }) => (
+const Recipe = ({ ...recipe }) => (
   <div id="recipe">
     <Presentation
-      name={name}
-      img={img}
+      name={recipe.name}
+      img={recipe.imageURL}
     />
-    <Ingredients ingredients={recipeData.ingredients} />
-    <Instructions steps={recipeData.instructions} />
+    <Ingredients ingredients={recipe.ingredients} />
+    <Instructions steps={recipe.steps} />
   </div>
 );
 

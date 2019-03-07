@@ -19,7 +19,7 @@ import './app.scss';
 /**
  * Code
  */
-console.log(recipes);
+// console.log(recipes[0].steps);
 const App = ({
   
 }) => (
@@ -30,10 +30,7 @@ const App = ({
         exact
         key={recipe.name}
         path={`/recipe/${slugify(recipe.name)}`}
-        render={() => <Recipe 
-        name={recipe.name}
-        img={recipe.imageURL}
-        />}
+        render={() => <Recipe {...recipe} />}
       />
     ))}
     <Route path="/home" component={Home} />

@@ -34,16 +34,15 @@ const Nav = () => (
   <div id="nav">
     <nav>
     <li>
-      <NavLink to="/home">
+      <NavLink to="/home" key="home">
         Home
       </NavLink>
     </li>
-    <Route path="/home" component={Home} />
       {recipes.map(recipe => (
       <li>
         <NavLink
         exact
-        key={recipe.name}
+        // key={recipe.name}
         to={`/recipe/${slugify(recipe.name)}`}
         >
         {recipe.name}
